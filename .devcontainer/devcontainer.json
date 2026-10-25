@@ -1,0 +1,43 @@
+{
+  "name": "StudyMate AI",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "README.md",
+        "backend/main.py",
+        "frontend/src/App.jsx"
+      ]
+    },
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+  "updateContentCommand": "pip3 install --user -r requirements.txt && cd frontend && npm install",
+  "portsAttributes": {
+    "3000": {
+      "label": "Frontend Web UI",
+      "onAutoForward": "openPreview"
+    },
+    "8000": {
+      "label": "FastAPI Backend API",
+      "onAutoForward": "silent"
+    }
+  },
+  "forwardPorts": [
+    3000,
+    8000
+  ]
+}
